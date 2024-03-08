@@ -4,6 +4,7 @@ import apiClient, { CanceledError } from '../services/api-client';
 export interface Game {
     id: number;
     name: string;
+    background_image: string;
   }
   //interface declared according to API doc, count and results are required fields.
   export interface FetchGamesResponse {
