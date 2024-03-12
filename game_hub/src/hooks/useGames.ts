@@ -14,9 +14,11 @@ export interface Game {
     name: string;
     background_image: string;
     parent_platforms: { platform: Platform }[];
+    metacritic: number;
   }
+
   //interface declared according to API doc, count and results are required fields.
-  export interface FetchGamesResponse {
+export interface FetchGamesResponse {
     count: number;
     results: Game[];
   }
