@@ -32,7 +32,7 @@ const useGames = () => {
         setIsLoading(true);
         const controller = new AbortController();
          apiClient
-        .get<FetchGamesResponse>("./games", {
+        .get<FetchGamesResponse>("/games", {
             signal: controller.signal
         })
         .then((res) => {setGames(res.data.results), setIsLoading(false)})
@@ -49,4 +49,4 @@ const useGames = () => {
   
 }
 
-export default useGames
+export default useGames;
