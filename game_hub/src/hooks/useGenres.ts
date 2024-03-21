@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient, { AxiosError, CanceledError } from "../services/api-client"
+import useData from "./useData";
 
 export interface Genre {
     id: number,
@@ -8,26 +7,8 @@ export interface Genre {
     games_count: number
 }
 
-interface FetchGenresResponse {
-    count: number,
-    results: Genre[];
-}
 
-const useGenres = () => {
-    const [genres, setGenres] = useState<Genre[]>([]);
-    const [error, setError] = useState("")
-    useEffect(()=> {
-        apiClient.get<FetchGenresResponse>("/genres")
-        .then((res) => setGenres(res.data.results))
-        .catch((err) => {
-            if (err instanceof CanceledError) return;
-            setError((err as AxiosError).message)
-            
-        })
-    }, [])
+const useGenres = () => useData<Genre>('/genres')
 
-    return { genres, error }
-
-}
 
 export default useGenres;
