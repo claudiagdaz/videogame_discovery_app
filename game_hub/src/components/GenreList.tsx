@@ -1,5 +1,13 @@
-import { List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
   //component shouldn't be aware of endpoint
@@ -11,11 +19,18 @@ const GenreList = () => {
       {error && <Text>{error}</Text>}
 
       <List>
-        <UnorderedList>
-          {data.map((genre) => (
-            <ListItem key={genre.id}>{genre.name}</ListItem>
-          ))}
-        </UnorderedList>
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY='5px'>
+            <HStack>
+              <Image
+                boxSize='32px'
+                borderRadius={8}
+                src={getCroppedImageUrl(genre.image_background)}
+              ></Image>
+              <Text fontSize='lg'>{genre.name}</Text>
+            </HStack>
+          </ListItem>
+        ))}
       </List>
     </>
   );
