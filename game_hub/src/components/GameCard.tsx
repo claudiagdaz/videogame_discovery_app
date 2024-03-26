@@ -1,4 +1,4 @@
-import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
+import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import { Game } from "../hooks/useGames";
@@ -20,6 +20,7 @@ const GameCard = ({ game }: GameCardProps) => {
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic} />
+          <Text>{game.genres.map((g) => g.slug)}</Text>
         </HStack>
       </CardBody>
     </Card>
