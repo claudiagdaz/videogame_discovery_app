@@ -20,7 +20,6 @@ const GameCard = ({ game }: GameCardProps) => {
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic} />
-          <Text>{game.genres.map((g) => g.slug)}</Text>
         </HStack>
       </CardBody>
     </Card>
