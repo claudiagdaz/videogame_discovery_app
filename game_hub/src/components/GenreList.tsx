@@ -12,9 +12,10 @@ import getCroppedImageUrl from "../services/image-url";
 
 interface GenreListProps {
   onSelectGenre: (g: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: GenreListProps) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   //component shouldn't be aware of endpoint - move endpoint to useGenres Hook
   //const { data, error } = useData<Genre>("/genres");
   const { data, error, isLoading } = useGenres();
@@ -35,6 +36,7 @@ const GenreList = ({ onSelectGenre }: GenreListProps) => {
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
               <Button
+                fontWeight={genre.id === selectedGenre?.id ? "bold " : "normal"}
                 variant='link'
                 fontSize='lg'
                 onClick={() => onSelectGenre(genre)}
