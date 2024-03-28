@@ -1,13 +1,10 @@
 import useData from './useData';
 import { Genre } from './useGenres';
+import { Platform } from './usePlatforms';
 //interface declared according to the fetch response
 //parent_platforms: [{platform: {...}}, {platform:{...}}]
 //platform:{id: 1, name: "PC", slug:"pc"}
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
+
 
 export interface Game {
     id: number;
@@ -25,6 +22,13 @@ export interface Game {
 //   }
 
 
-const useGames = (selectedGenre: Genre | null) => useData<Game>('/games', { params: {genres: selectedGenre?.id}}, [selectedGenre?.id])
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>('/games', 
+{ params: 
+  {
+    genres: selectedGenre?.id, 
+    parent_platforms: selectedPlatform?.id
+  }
+}, 
+[selectedGenre?.id, selectedPlatform?.id])
 
 export default useGames;

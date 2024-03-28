@@ -1,5 +1,4 @@
 import useData from "./useData";
-import { Game } from "./useGames";
 
 
 
