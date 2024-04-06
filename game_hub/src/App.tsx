@@ -9,6 +9,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import { HStack } from "@chakra-ui/react";
 import SortSelector from "./components/SortSelector";
+import SearchBar from "./components/SearchBar";
 
 export interface GameQuery {
   genre: Genre | null;
