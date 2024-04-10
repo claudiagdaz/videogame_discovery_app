@@ -13,7 +13,7 @@ export interface Game {
     background_image: string;
     parent_platforms: { platform: Platform }[];
     metacritic: number;
-    genres: Genre[];
+    rating_top: number;
   }
 
   //interface declared according to API doc, count and results are required fields.
