@@ -3,7 +3,6 @@ import {
   HStack,
   Heading,
   Image,
-  Link,
   List,
   ListItem,
   Spinner,
