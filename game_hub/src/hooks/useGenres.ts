@@ -1,7 +1,7 @@
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import useData from "./useData";
 import genres from "../data/genres";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import apiClient from "../services/api-client";
 import { FetchResponse } from "./useData";
 
@@ -22,9 +22,6 @@ const useGenres = () => useQuery({
             initialData: {count: genres.length, results: genres}
 })
     
-
-
-
 //const useGenres = () => useData<Genre>('/genres')
 //const useGenres = () => ({ data: genres, isLoading: false, error: null })
 
