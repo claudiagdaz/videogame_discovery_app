@@ -1,7 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import useData from './useData';
-import { Genre } from './useGenres';
+import apiClient from '../services/apiClient';
+import { FetchResponse } from '../services/apiClient';
 import { Platform } from './usePlatforms';
+
 //interface declared according to the fetch response
 //parent_platforms: [{platform: {...}}, {platform:{...}}]
 //platform:{id: 1, name: "PC", slug:"pc"}
@@ -16,22 +18,20 @@ export interface Game {
     rating_top: number;
   }
 
-  //interface declared according to API doc, count and results are required fields.
-// export interface FetchGamesResponse {
-//     count: number;
-//     results: Game[];
-//   }
-
-
-const useGames = (gameQuery: GameQuery) => useData<Game>('/games', 
-{ params: 
-  {
-    genres: gameQuery.genre?.id, 
-    parent_platforms: gameQuery.platform?.id,
-    ordering: gameQuery.sortParameter,
-    search: gameQuery.searchInput
-  }
-}, 
-[gameQuery])
+  const useGames = (gameQuery: GameQuery) => 
+    useQuery<FetchResponse<Game>, Error>({
+      queryKey: ["games", gameQuery],
+      queryFn: () => apiClient
+      .get<FetchResponse<Game>>("/games", {
+        params:
+          {
+          genres: gameQuery.genre?.id, 
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortParameter,
+          search: gameQuery.searchInput
+        }
+      })
+      .then(res => res.data)
+    })
 
 export default useGames;
