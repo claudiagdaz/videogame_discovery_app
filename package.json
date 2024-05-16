@@ -2,5 +2,8 @@
   "devDependencies": {
     "axios": "^1.6.8",
     "react-icons": "^5.0.1"
+  },
+  "dependencies": {
+    "react-infinite-scroll-component": "^6.1.0"
   }
 }
