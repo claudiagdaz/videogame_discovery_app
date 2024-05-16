@@ -32,14 +32,13 @@ export interface Game {
           ordering: gameQuery.sortParameter,
           search: gameQuery.searchInput,
           page: pageParam,
-          // _start: (pageParam -1) * gameQuery.pageSize,
-          // _limit: gameQuery.pageSize
         }
       }),
       keepPreviousData: true,
       getNextPageParam: (lastPage, allPages) => {
         return lastPage.next ? allPages.length + 1: undefined;
-      }
+      },
+      staleTime: 24 * 60 * 60 * 1000 //1day
     })
 
 
