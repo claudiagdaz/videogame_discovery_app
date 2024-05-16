@@ -4,6 +4,7 @@
     "react-icons": "^5.0.1"
   },
   "dependencies": {
+    "@types/ms": "^0.7.34",
     "react-infinite-scroll-component": "^6.1.0"
   }
 }
