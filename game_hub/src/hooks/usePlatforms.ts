@@ -3,7 +3,7 @@ import ms from "ms";
 import platforms from "../data/platforms";
 import APIClient from "../services/apiClient";
 
-const apiClient = new APIClient<Platform>("/platforms/lists/parents")
+const apiClient = new APIClient<Platform>('/platforms/lists/parents')
 
 export interface PlatformProps {
     platforms: Platform[];
@@ -17,12 +17,9 @@ export interface Platform {
 
 const usePlatforms = () => useQuery({
   queryKey: ['platforms'],
-  // queryFn: () => apiClient
-  // .get<FetchResponse<Platform>>("/platforms/lists/parents")
-  // .then((res) => res.data),
   queryFn: apiClient.getAll,
   staleTime: ms('24h'),
-  initialData: {count: platforms.length, results: platforms}
+  initialData: platforms
 })
 
 export default usePlatforms;
