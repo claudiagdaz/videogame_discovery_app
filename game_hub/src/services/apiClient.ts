@@ -3,7 +3,7 @@ import axios, {CanceledError, AxiosError, AxiosRequestConfig} from "axios";
 export interface FetchResponse<T> {
     count: number;
     results: T[];
-    next?: string | null;
+    next: string | null;
 
   }
 
