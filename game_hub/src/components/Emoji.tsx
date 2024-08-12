@@ -1,6 +1,3 @@
-import three_star from "../assets/three_star.jpg";
-import four_star from "../assets/four_star.jpg";
-import five_star from "../assets/five_star.jpg";
 import thumbsUp from "../assets/thumbs-up.webp";
 import meh from "../assets/meh.webp";
 import bullsEye from "../assets/bulls-eye.webp";
